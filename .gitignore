@@ -1,0 +1,34 @@
+# Archivos de configuración
+config/database.php
+.env
+
+# Archivos generados
+storage/ple/*
+storage/reports/*
+storage/logs/*
+!storage/ple/.gitkeep
+!storage/reports/.gitkeep
+!storage/logs/.gitkeep
+
+# Archivos temporales
+*.log
+*.tmp
+*.cache
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vendor
+vendor/
+
+# Backups
+*.sql
+backup_*
