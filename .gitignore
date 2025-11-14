@@ -31,4 +31,5 @@ vendor/
 
 # Backups
 *.sql
+!database/schema.sql
 backup_*
