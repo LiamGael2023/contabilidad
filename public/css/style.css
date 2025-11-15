@@ -1,125 +1,233 @@
-/* Sistema de Contabilidad Perú - Estilos personalizados */
+/* Sistema de Contabilidad Perú - Estilos personalizados con Tabler.io */
+
+@import url('https://rsms.me/inter/inter.css');
 
 :root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --success-color: #198754;
-    --danger-color: #dc3545;
-    --warning-color: #ffc107;
-    --info-color: #0dcaf0;
+    --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    font-feature-settings: "cv03", "cv04", "cv11";
 }
 
-.footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #dee2e6;
+/* Navbar personalizado */
+.navbar-dark {
+    background-color: #0D8ABC !important;
+}
+
+.navbar-brand {
+    font-weight: 600;
 }
 
 /* Cards */
 .card {
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    transition: transform 0.2s;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
-/* Tablas */
+/* Tablas mejoradas */
 .table {
-    background-color: white;
+    font-size: 0.9rem;
 }
 
 .table thead {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #f8f9fa;
 }
 
-/* Botones */
-.btn {
-    border-radius: 5px;
+/* Libro Diario / Mayor */
+.libro-asiento {
+    border-left: 4px solid #0D8ABC;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
 }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+.libro-table .total-row {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border-top: 2px solid #dee2e6;
 }
 
-/* Navbar */
-.navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* Balance General */
+.balance-total {
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-top: 3px double #000;
+    padding-top: 10px;
 }
 
-.navbar-brand {
-    font-weight: bold;
-    font-size: 1.25rem;
+/* Badges personalizados */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+    font-weight: 500;
+}
+
+/* Estados */
+.estado-registrado {
+    background-color: #198754 !important;
+}
+
+.estado-borrador {
+    background-color: #ffc107 !important;
+}
+
+.estado-anulado {
+    background-color: #dc3545 !important;
+}
+
+/* Avatares */
+.avatar {
+    border-radius: 50%;
+}
+
+/* Alertas */
+.alert {
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.alert-success {
+    background-color: #d1f3e4;
+    color: #0a6338;
+}
+
+.alert-danger {
+    background-color: #fce6e6;
+    color: #991b1b;
+}
+
+.alert-info {
+    background-color: #e0f2fe;
+    color: #075985;
+}
+
+.alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
 }
 
 /* Formularios */
 .form-control:focus,
 .form-select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    border-color: #0D8ABC;
+    box-shadow: 0 0 0 0.25rem rgba(13, 138, 188, 0.25);
 }
 
-/* Badges */
-.badge {
-    font-size: 0.85rem;
-    padding: 0.35em 0.65em;
+/* Botones */
+.btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
 }
 
-/* Alerts */
-.alert {
-    border-radius: 8px;
+.btn-primary {
+    background-color: #0D8ABC;
+    border-color: #0D8ABC;
 }
 
-/* Libro Diario / Mayor */
-.libro-table {
-    font-size: 0.9rem;
+.btn-primary:hover {
+    background-color: #0A5A7F;
+    border-color: #0A5A7F;
 }
 
-.libro-table .total-row {
-    font-weight: bold;
-    background-color: #e9ecef;
+/* Page header */
+.page-header {
+    margin-bottom: 1.5rem;
 }
 
-/* Asientos Contables */
-.asiento-detalle {
+.page-title {
+    font-weight: 600;
+}
+
+.page-pretitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #626976;
+}
+
+/* List group */
+.list-group-item-action:hover {
     background-color: #f8f9fa;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
 }
 
-/* Balance General */
-.balance-section {
-    margin-bottom: 30px;
+/* Empty state */
+.empty {
+    padding: 3rem 1.5rem;
+    text-align: center;
 }
 
-.balance-total {
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-top: 3px double #000;
-    padding-top: 10px;
+.empty-icon {
+    font-size: 4rem;
+    color: #dee2e6;
+    margin-bottom: 1rem;
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Datagrid */
+.datagrid {
+    display: grid;
+    gap: 1rem;
+}
+
+.datagrid-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.datagrid-title {
+    color: #626976;
+    font-size: 0.875rem;
+}
+
+.datagrid-content {
+    font-weight: 500;
+}
+
+/* Print styles */
+@media print {
+    .no-print,
+    .navbar,
+    .page-header,
+    .btn,
+    .footer {
+        display: none !important;
+    }
+
+    .page-body {
+        padding: 0 !important;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+    }
+
+    body {
+        background-color: white;
+    }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .card {
-        margin-bottom: 15px;
+        margin-bottom: 1rem;
     }
 
     .table {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -139,7 +247,7 @@ body {
     animation: fadeIn 0.3s ease-in;
 }
 
-/* Utilidades */
+/* Utilidades personalizadas */
 .text-right {
     text-align: right;
 }
@@ -148,35 +256,36 @@ body {
     cursor: pointer;
 }
 
-.overflow-auto {
-    overflow: auto;
+/* Footer mejorado */
+.footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
 }
 
-/* Estado de asientos y comprobantes */
-.estado-registrado {
-    background-color: var(--success-color);
+/* Libro contable específico */
+code {
+    padding: 0.2em 0.4em;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    color: #e74c3c;
 }
 
-.estado-borrador {
-    background-color: var(--warning-color);
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
-.estado-anulado {
-    background-color: var(--danger-color);
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-/* Print styles */
-@media print {
-    .no-print {
-        display: none !important;
-    }
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
 
-    body {
-        background-color: white;
-    }
-
-    .card {
-        box-shadow: none;
-        border: 1px solid #dee2e6;
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
