@@ -19,6 +19,7 @@ $router->get('dashboard', 'DashboardController@index');
 $router->get('empresas', 'EmpresaController@index');
 $router->get('empresas/nueva', 'EmpresaController@create');
 $router->post('empresas/guardar', 'EmpresaController@store');
+$router->post('empresas/seleccionar/{id}', 'EmpresaController@seleccionar');
 $router->get('empresas/editar/{id}', 'EmpresaController@edit');
 $router->post('empresas/actualizar/{id}', 'EmpresaController@update');
 $router->post('empresas/eliminar/{id}', 'EmpresaController@delete');

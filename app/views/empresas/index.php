@@ -50,6 +50,11 @@
                                             <?php else: ?>
                                                 <span class="badge bg-danger">Inactivo</span>
                                             <?php endif; ?>
+                                            <?php if (isset($_SESSION['empresa_id']) && $_SESSION['empresa_id'] == $empresa['id']): ?>
+                                                <span class="badge bg-primary ms-1">
+                                                    <i class="bi bi-check-circle"></i> Seleccionada
+                                                </span>
+                                            <?php endif; ?>
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-sm">
@@ -76,11 +81,17 @@
     </div>
 </div>
 
+<form id="formSeleccionarEmpresa" method="POST" style="display: none;">
+    <input type="hidden" name="empresa_id" id="empresa_id_input">
+</form>
+
 <script>
 function seleccionarEmpresa(id, nombre) {
     if (confirm(`¿Seleccionar empresa "${nombre}"?`)) {
-        // Aquí se implementaría la lógica para guardar en sesión
-        alert('Funcionalidad de selección de empresa - Por implementar');
+        // Enviar formulario para seleccionar la empresa
+        const form = document.getElementById('formSeleccionarEmpresa');
+        form.action = `/empresas/seleccionar/${id}`;
+        form.submit();
     }
 }
 </script>

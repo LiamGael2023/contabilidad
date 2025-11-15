@@ -106,8 +106,14 @@ class EmpresaController extends Controller
                 $this->periodoModel->crearPeriodo($empresaId, $anio, $mes);
             }
 
-            $this->setFlash('success', 'Empresa creada exitosamente');
-            $this->redirect('empresas');
+            // Auto-seleccionar la empresa recién creada
+            $_SESSION['empresa_id'] = $empresaId;
+
+            $empresa = $this->empresaModel->find($empresaId);
+            $_SESSION['empresa_nombre'] = $empresa['razon_social'];
+
+            $this->setFlash('success', 'Empresa creada y seleccionada exitosamente');
+            $this->redirect('dashboard');
 
         } catch (\Exception $e) {
             $this->setFlash('error', $e->getMessage());
@@ -170,6 +176,41 @@ class EmpresaController extends Controller
         } catch (\Exception $e) {
             $this->setFlash('error', $e->getMessage());
             $this->redirect("empresas/editar/{$id}");
+        }
+    }
+
+    /**
+     * Seleccionar empresa activa
+     */
+    public function seleccionar(Request $request, $id)
+    {
+        $this->requireAuth();
+
+        if (!$request->isPost()) {
+            $this->redirect('empresas');
+        }
+
+        try {
+            $empresa = $this->empresaModel->find($id);
+
+            if (!$empresa) {
+                throw new \Exception('Empresa no encontrada');
+            }
+
+            if (!$empresa['activo']) {
+                throw new \Exception('La empresa está inactiva');
+            }
+
+            // Guardar en sesión
+            $_SESSION['empresa_id'] = $empresa['id'];
+            $_SESSION['empresa_nombre'] = $empresa['razon_social'];
+
+            $this->setFlash('success', "Empresa '{$empresa['razon_social']}' seleccionada exitosamente");
+            $this->redirect('dashboard');
+
+        } catch (\Exception $e) {
+            $this->setFlash('error', $e->getMessage());
+            $this->redirect('empresas');
         }
     }
 

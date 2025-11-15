@@ -27,6 +27,16 @@
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
+                    <?php if (isset($_SESSION['empresa_nombre'])): ?>
+                        <div class="nav-item d-none d-md-flex me-3">
+                            <div class="btn-list">
+                                <a href="/empresas" class="btn btn-outline-light">
+                                    <i class="ti ti-building me-1"></i>
+                                    <?= htmlspecialchars($_SESSION['empresa_nombre']) ?>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown">
                             <span class="avatar avatar-sm" style="background-image: url(https://ui-avatars.com/api/?name=<?= urlencode($_SESSION['user']['nombre'] ?? 'U') ?>&background=0D8ABC&color=fff)"></span>
