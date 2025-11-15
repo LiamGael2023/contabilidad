@@ -353,7 +353,7 @@ CREATE TABLE logs_auditoria (
 
 -- Usuario administrador por defecto
 INSERT INTO usuarios (username, password, nombre, apellido, email, rol) VALUES
-('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrador', 'Sistema', 'admin@sistema.com', 'admin');
+('admin', '$2y$12$YpWdU.0zk5Zmr07yp7ZT0ejZx4dUWlUK1jeykNL7gX4QpoL/2/oYy', 'Administrador', 'Sistema', 'admin@sistema.com', 'admin');
 -- Contraseña: admin123
 
 -- Tipos de comprobante según SUNAT
