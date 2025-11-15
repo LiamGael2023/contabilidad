@@ -95,6 +95,33 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <i class="ti ti-cash"></i>
+                                    </span>
+                                    <span class="nav-link-title">Finanzas</span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/cuentas-por-cobrar">
+                                        <i class="ti ti-coins me-2"></i>Cuentas por Cobrar
+                                    </a>
+                                    <a class="dropdown-item" href="/cuentas-por-pagar">
+                                        <i class="ti ti-receipt me-2"></i>Cuentas por Pagar
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/bancos">
+                                        <i class="ti ti-building-bank me-2"></i>Caja y Bancos
+                                    </a>
+                                    <a class="dropdown-item" href="/movimientos-caja">
+                                        <i class="ti ti-arrows-exchange me-2"></i>Movimientos de Caja
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/tipos-cambio">
+                                        <i class="ti ti-currency-dollar me-2"></i>Tipos de Cambio
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         <i class="ti ti-file-invoice"></i>
                                     </span>
                                     <span class="nav-link-title">Registros SUNAT</span>

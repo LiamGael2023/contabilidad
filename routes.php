@@ -44,6 +44,56 @@ $router->get('registro-compras/nuevo', 'RegistroComprasController@create');
 $router->post('registro-compras/guardar', 'RegistroComprasController@store');
 $router->get('registro-compras/exportar-ple', 'RegistroComprasController@exportarPLE');
 
+// Cuentas por Cobrar
+$router->get('cuentas-por-cobrar', 'CuentasPorCobrarController@index');
+$router->get('cuentas-por-cobrar/nuevo', 'CuentasPorCobrarController@create');
+$router->post('cuentas-por-cobrar/guardar', 'CuentasPorCobrarController@store');
+$router->get('cuentas-por-cobrar/ver/{id}', 'CuentasPorCobrarController@show');
+$router->post('cuentas-por-cobrar/registrar-pago', 'CuentasPorCobrarController@registrarPago');
+$router->get('cuentas-por-cobrar/antiguedad', 'CuentasPorCobrarController@antiguedadSaldos');
+$router->get('cuentas-por-cobrar/vencidas', 'CuentasPorCobrarController@vencidas');
+$router->get('cuentas-por-cobrar/por-vencer', 'CuentasPorCobrarController@porVencer');
+
+// Cuentas por Pagar
+$router->get('cuentas-por-pagar', 'CuentasPorPagarController@index');
+$router->get('cuentas-por-pagar/nuevo', 'CuentasPorPagarController@create');
+$router->post('cuentas-por-pagar/guardar', 'CuentasPorPagarController@store');
+$router->get('cuentas-por-pagar/ver/{id}', 'CuentasPorPagarController@show');
+$router->post('cuentas-por-pagar/registrar-pago', 'CuentasPorPagarController@registrarPago');
+$router->get('cuentas-por-pagar/antiguedad', 'CuentasPorPagarController@antiguedadSaldos');
+$router->get('cuentas-por-pagar/vencidas', 'CuentasPorPagarController@vencidas');
+$router->get('cuentas-por-pagar/por-vencer', 'CuentasPorPagarController@porVencer');
+
+// Bancos y Cajas
+$router->get('bancos', 'BancoController@index');
+$router->get('bancos/nuevo', 'BancoController@create');
+$router->post('bancos/guardar', 'BancoController@store');
+$router->get('bancos/editar/{id}', 'BancoController@edit');
+$router->post('bancos/actualizar/{id}', 'BancoController@update');
+$router->post('bancos/toggle-activo/{id}', 'BancoController@toggleActivo');
+$router->get('bancos/movimientos/{id}', 'BancoController@movimientos');
+$router->get('bancos/liquidez', 'BancoController@liquidez');
+
+// Movimientos de Caja
+$router->get('movimientos-caja', 'MovimientoCajaController@index');
+$router->get('movimientos-caja/ingreso', 'MovimientoCajaController@ingreso');
+$router->post('movimientos-caja/guardar-ingreso', 'MovimientoCajaController@storeIngreso');
+$router->get('movimientos-caja/egreso', 'MovimientoCajaController@egreso');
+$router->post('movimientos-caja/guardar-egreso', 'MovimientoCajaController@storeEgreso');
+$router->get('movimientos-caja/flujo-diario', 'MovimientoCajaController@flujoDiario');
+$router->get('movimientos-caja/flujo-mensual', 'MovimientoCajaController@flujoMensual');
+$router->post('movimientos-caja/eliminar/{id}', 'MovimientoCajaController@delete');
+
+// Tipos de Cambio
+$router->get('tipos-cambio', 'TipoCambioController@index');
+$router->get('tipos-cambio/nuevo', 'TipoCambioController@create');
+$router->post('tipos-cambio/guardar', 'TipoCambioController@store');
+$router->post('tipos-cambio/importar-sunat', 'TipoCambioController@importarSUNAT');
+$router->get('tipos-cambio/por-fecha', 'TipoCambioController@getPorFecha');
+$router->get('tipos-cambio/promedio-mensual', 'TipoCambioController@promedioMensual');
+$router->get('tipos-cambio/cierre', 'TipoCambioController@tipoCambioCierre');
+$router->post('tipos-cambio/eliminar/{id}', 'TipoCambioController@delete');
+
 // Plan Contable
 $router->get('plan-contable', 'PlanContableController@index');
 $router->get('plan-contable/crear', 'PlanContableController@create');
