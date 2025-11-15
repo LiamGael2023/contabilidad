@@ -102,6 +102,88 @@ class PlanContableController extends Controller
     }
 
     /**
+     * Editar cuenta
+     */
+    public function edit(Request $request, $id)
+    {
+        $this->requireAuth();
+
+        if (!isset($_SESSION['empresa_id'])) {
+            $this->setFlash('error', 'Debe seleccionar una empresa');
+            $this->redirect('dashboard');
+        }
+
+        $cuenta = $this->planContableModel->find($id);
+
+        if (!$cuenta || $cuenta['empresa_id'] != $_SESSION['empresa_id']) {
+            $this->setFlash('error', 'Cuenta no encontrada');
+            $this->redirect('plan-contable');
+        }
+
+        $this->view('plan-contable.edit', [
+            'title' => 'Editar Cuenta Contable',
+            'cuenta' => $cuenta,
+            'csrf_token' => $this->generateCsrfToken()
+        ]);
+    }
+
+    /**
+     * Actualizar cuenta
+     */
+    public function update(Request $request, $id)
+    {
+        $this->requireAuth();
+
+        if (!$request->isPost() || !isset($_SESSION['empresa_id'])) {
+            $this->redirect('plan-contable');
+        }
+
+        try {
+            $empresaId = $_SESSION['empresa_id'];
+
+            $data = [
+                'descripcion' => $request->post('descripcion'),
+                'naturaleza' => $request->post('naturaleza'),
+                'tipo' => $request->post('tipo'),
+                'recibe_saldo' => $request->post('recibe_saldo') ? 1 : 0,
+                'requiere_auxiliar' => $request->post('requiere_auxiliar') ? 1 : 0
+            ];
+
+            $this->planContableModel->update($id, $data);
+
+            $this->setFlash('success', 'Cuenta actualizada exitosamente');
+            $this->redirect('plan-contable');
+
+        } catch (\Exception $e) {
+            $this->setFlash('error', $e->getMessage());
+            $this->redirect("plan-contable/editar/{$id}");
+        }
+    }
+
+    /**
+     * Eliminar cuenta
+     */
+    public function delete(Request $request, $id)
+    {
+        $this->requireAuth();
+
+        if (!$request->isPost() || !isset($_SESSION['empresa_id'])) {
+            $this->redirect('plan-contable');
+        }
+
+        try {
+            $this->planContableModel->delete($id);
+
+            $this->setFlash('success', 'Cuenta eliminada exitosamente');
+            $this->redirect('plan-contable');
+
+        } catch (\Exception $e) {
+            $this->setFlash('error', $e->getMessage());
+            $this->redirect('plan-contable');
+        }
+    }
+
+    /**
      * Cargar PCGE completo
      */
     public function loadPCGE(Request $request)
