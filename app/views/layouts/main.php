@@ -85,12 +85,26 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/comprobantes">
+                                <a class="nav-link" href="/terceros">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-receipt"></i>
+                                        <i class="ti ti-users"></i>
                                     </span>
-                                    <span class="nav-link-title">Comprobantes</span>
+                                    <span class="nav-link-title">Terceros</span>
                                 </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <i class="ti ti-file-invoice"></i>
+                                    </span>
+                                    <span class="nav-link-title">Registros SUNAT</span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/registro-ventas">Registro de Ventas</a>
+                                    <a class="dropdown-item" href="/registro-compras">Registro de Compras</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/comprobantes">Comprobantes de Pago</a>
+                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button">

@@ -24,6 +24,26 @@ $router->get('empresas/editar/{id}', 'EmpresaController@edit');
 $router->post('empresas/actualizar/{id}', 'EmpresaController@update');
 $router->post('empresas/eliminar/{id}', 'EmpresaController@delete');
 
+// Terceros (Clientes y Proveedores)
+$router->get('terceros', 'TerceroController@index');
+$router->get('terceros/nuevo', 'TerceroController@create');
+$router->post('terceros/guardar', 'TerceroController@store');
+$router->get('terceros/editar/{id}', 'TerceroController@edit');
+$router->post('terceros/actualizar/{id}', 'TerceroController@update');
+$router->post('terceros/eliminar/{id}', 'TerceroController@delete');
+
+// Registro de Ventas
+$router->get('registro-ventas', 'RegistroVentasController@index');
+$router->get('registro-ventas/nuevo', 'RegistroVentasController@create');
+$router->post('registro-ventas/guardar', 'RegistroVentasController@store');
+$router->get('registro-ventas/exportar-ple', 'RegistroVentasController@exportarPLE');
+
+// Registro de Compras
+$router->get('registro-compras', 'RegistroComprasController@index');
+$router->get('registro-compras/nuevo', 'RegistroComprasController@create');
+$router->post('registro-compras/guardar', 'RegistroComprasController@store');
+$router->get('registro-compras/exportar-ple', 'RegistroComprasController@exportarPLE');
+
 // Plan Contable
 $router->get('plan-contable', 'PlanContableController@index');
 $router->get('plan-contable/crear', 'PlanContableController@create');
