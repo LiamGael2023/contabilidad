@@ -24,7 +24,7 @@ class RegistroCompra extends Model
     {
         $sql = "SELECT rc.*, t.razon_social as proveedor_nombre
                 FROM {$this->table} rc
-                LEFT JOIN terceros t ON rc.numero_documento_proveedor = t.numero_documento
+                LEFT JOIN terceros t ON rc.numero_documento_proveedor COLLATE utf8mb4_general_ci = t.numero_documento COLLATE utf8mb4_general_ci
                 WHERE rc.periodo_id = :periodo_id
                 ORDER BY rc.fecha_emision DESC, rc.correlativo DESC";
 
@@ -39,7 +39,7 @@ class RegistroCompra extends Model
     {
         $sql = "SELECT rc.*, t.razon_social as proveedor_nombre
                 FROM {$this->table} rc
-                LEFT JOIN terceros t ON rc.numero_documento_proveedor = t.numero_documento
+                LEFT JOIN terceros t ON rc.numero_documento_proveedor COLLATE utf8mb4_general_ci = t.numero_documento COLLATE utf8mb4_general_ci
                 WHERE rc.empresa_id = :empresa_id
                 AND rc.fecha_emision BETWEEN :fecha_inicio AND :fecha_fin
                 ORDER BY rc.fecha_emision, rc.correlativo";

@@ -24,7 +24,7 @@ class RegistroVenta extends Model
     {
         $sql = "SELECT rv.*, t.razon_social as cliente_nombre
                 FROM {$this->table} rv
-                LEFT JOIN terceros t ON rv.numero_documento_cliente = t.numero_documento
+                LEFT JOIN terceros t ON rv.numero_documento_cliente COLLATE utf8mb4_general_ci = t.numero_documento COLLATE utf8mb4_general_ci
                 WHERE rv.periodo_id = :periodo_id
                 ORDER BY rv.fecha_emision DESC, rv.correlativo DESC";
 
@@ -39,7 +39,7 @@ class RegistroVenta extends Model
     {
         $sql = "SELECT rv.*, t.razon_social as cliente_nombre
                 FROM {$this->table} rv
-                LEFT JOIN terceros t ON rv.numero_documento_cliente = t.numero_documento
+                LEFT JOIN terceros t ON rv.numero_documento_cliente COLLATE utf8mb4_general_ci = t.numero_documento COLLATE utf8mb4_general_ci
                 WHERE rv.empresa_id = :empresa_id
                 AND rv.fecha_emision BETWEEN :fecha_inicio AND :fecha_fin
                 ORDER BY rv.fecha_emision, rv.correlativo";
