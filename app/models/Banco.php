@@ -13,9 +13,22 @@ class Banco extends Model
     ];
 
     /**
-     * Obtener bancos activos por empresa
+     * Obtener bancos por empresa (activos e inactivos)
      */
     public function getByEmpresa($empresaId)
+    {
+        $sql = "SELECT * FROM {$this->table}
+                WHERE empresa_id = :empresa_id
+                ORDER BY activo DESC, nombre_banco, numero_cuenta";
+
+        $stmt = $this->db->query($sql, ['empresa_id' => $empresaId]);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Obtener solo bancos activos
+     */
+    public function getActivos($empresaId)
     {
         $sql = "SELECT * FROM {$this->table}
                 WHERE empresa_id = :empresa_id
@@ -78,5 +91,25 @@ class Banco extends Model
 
         $this->update($id, ['saldo_actual' => $nuevoSaldo]);
         return $nuevoSaldo;
+    }
+
+    /**
+     * Obtener resumen de liquidez por moneda
+     */
+    public function getResumenLiquidez($empresaId)
+    {
+        $sql = "SELECT
+                    moneda,
+                    COUNT(*) as cantidad_cuentas,
+                    SUM(saldo_actual) as saldo_total,
+                    SUM(saldo_inicial) as saldo_inicial_total
+                FROM {$this->table}
+                WHERE empresa_id = :empresa_id
+                AND activo = 1
+                GROUP BY moneda
+                ORDER BY moneda";
+
+        $stmt = $this->db->query($sql, ['empresa_id' => $empresaId]);
+        return $stmt->fetchAll();
     }
 }

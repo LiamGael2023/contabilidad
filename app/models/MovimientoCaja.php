@@ -158,4 +158,20 @@ class MovimientoCaja extends Model
         ]);
         return $stmt->fetchAll();
     }
+
+    /**
+     * Alias para compatibilidad
+     */
+    public function getFlujoDiario($empresaId, $fecha = null)
+    {
+        return $this->getFlujoDia($empresaId, $fecha);
+    }
+
+    /**
+     * Alias para compatibilidad
+     */
+    public function getFlujoMensual($empresaId, $anio, $mes)
+    {
+        return $this->getFlujoMes($empresaId, $anio, $mes);
+    }
 }

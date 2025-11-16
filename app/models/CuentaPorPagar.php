@@ -103,6 +103,14 @@ class CuentaPorPagar extends Model
     }
 
     /**
+     * Alias de getPorPagar para compatibilidad
+     */
+    public function getPorVencer($empresaId, $dias = 30)
+    {
+        return $this->getPorPagar($empresaId, $dias);
+    }
+
+    /**
      * Registrar pago a proveedor
      */
     public function registrarPago($id, $montoPago, $fechaPago, $metodoPago, $observaciones = null)
