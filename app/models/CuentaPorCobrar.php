@@ -38,6 +38,32 @@ class CuentaPorCobrar extends Model
     }
 
     /**
+     * Obtener cuentas por estado
+     */
+    public function getByEstado($empresaId, $estado)
+    {
+        return $this->getByEmpresa($empresaId, $estado);
+    }
+
+    /**
+     * Obtener total por estado
+     */
+    public function getTotalPorEstado($empresaId, $estado)
+    {
+        $sql = "SELECT COALESCE(SUM(saldo_pendiente), 0) as total
+                FROM {$this->table}
+                WHERE empresa_id = :empresa_id
+                AND estado = :estado";
+
+        $stmt = $this->db->query($sql, [
+            'empresa_id' => $empresaId,
+            'estado' => $estado
+        ]);
+        $result = $stmt->fetch();
+        return $result['total'] ?? 0;
+    }
+
+    /**
      * Obtener cuentas vencidas
      */
     public function getVencidas($empresaId)
