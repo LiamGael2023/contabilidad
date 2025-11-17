@@ -105,12 +105,13 @@ class TipoCambio extends Model
     public function getPromedioMes($anio, $mes, $moneda = 'USD')
     {
         $sql = "SELECT
-                    AVG(compra) as compra_promedio,
-                    AVG(venta) as venta_promedio,
-                    MIN(compra) as compra_min,
-                    MAX(compra) as compra_max,
-                    MIN(venta) as venta_min,
-                    MAX(venta) as venta_max
+                    COUNT(*) as cantidad_registros,
+                    AVG(compra) as promedio_compra,
+                    AVG(venta) as promedio_venta,
+                    MIN(compra) as minimo_compra,
+                    MAX(compra) as maximo_compra,
+                    MIN(venta) as minimo_venta,
+                    MAX(venta) as maximo_venta
                 FROM {$this->table}
                 WHERE YEAR(fecha) = :anio
                 AND MONTH(fecha) = :mes
